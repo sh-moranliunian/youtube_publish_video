@@ -22,6 +22,9 @@
    - flask
    - httplib
 2. OAuth 代码说明：
-   假设 OAuth 服务代码部署在公网域名 `yumenzhisi.com` 下，那么可以在浏览器里直接输入 `https://yumenzhisi.com/` 访问，会默认调用上面 `index` 方法，然后会被立即重定向到 `authorize` 方法，这个方法里会告诉 YouTube 重定向的 URI 是什么，接下来就是前端页面的 Google 账号授权操作，一步步点下去之后，最终 YouTube API 服务端会调用前面传递的重定向 URI，上面的代码中重定向 URI 为 `/oauth2callback`，也就是上面的 `oauth2callback` 方法，在该方法里会拿到 `refresh_token` 等信息，这个信息要持久化存储起来。
+假设 OAuth 服务代码部署在公网域名 `yumenzhisi.com` 下，那么可以在浏览器里直接输入 `https://yumenzhisi.com/` 访问，会默认调用上面 `index` 方法，然后会被立即重定向到 `authorize` 方法，这个方法里会告诉 YouTube 重定向的 URI 是什么，接下来就是前端页面的 Google 账号授权操作，一步步点下去之后，最终 YouTube API 服务端会调用前面传递的重定向 URI，上面的代码中重定向 URI 为 `/oauth2callback`，也就是上面的 `oauth2callback` 方法，在该方法里会拿到 `refresh_token` 等信息，这个信息要持久化存储起来。
 3. Publish 代码说明：
-   代码中 `credentials.txt` 里存放的是前面步骤中授权得到的用户 `refresh_token` 的信息（其实可以存到 MySQL 等数据库中，这里只是为了模拟流程方便而存文件中）。`options` 是待发布的视频的一些信息，`file` 为视频文件的路径，`title` 为视频标题，`description` 是视频的描述信息，`category` 为视频的类别，22 表示 People & Blogs，`keywords` 表示关键字，`privacyStatus` 表示是公开还是私有。
+代码中 `credentials.txt` 里存放的是前面步骤中授权得到的用户 `refresh_token` 的信息（其实可以存到 MySQL 等数据库中，这里只是为了模拟流程方便而存文件中）。`options` 是待发布的视频的一些信息，`file` 为视频文件的路径，`title` 为视频标题，`description` 是视频的描述信息，`category` 为视频的类别，22 表示 People & Blogs，`keywords` 表示关键字，`privacyStatus` 表示是公开还是私有。
+## API调用次数限制
+https://developers.google.com/youtube/v3/docs/videos/insert
+此处说发布视频接口每次消耗1600个额度单位，由于作者没有测试每天多次发布视频，因此不知道是否会有触发额度上限导致发布失败的情绪，请各位使用者注意这点。
