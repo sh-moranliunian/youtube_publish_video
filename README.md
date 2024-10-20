@@ -1,4 +1,4 @@
-# 用户需要将自己的 YouTube 发布视频的权限授予给 Google 应用
+用户需要将自己的youtube发布视频的权限授予给google应用，谷歌应用才可以根据用户授权信息里的token来发布视频。
 
 ## 一、注册 Google 应用
 1. 打开开发者控制台：[Google Cloud Console](https://console.cloud.google.com/projectselector2/apis/dashboard?hl=zh-cn&supportedpurview=project)
