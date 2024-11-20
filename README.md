@@ -28,3 +28,12 @@
 ## API调用次数限制
 https://developers.google.com/youtube/v3/docs/videos/insert
 此处说发布视频接口每次消耗1600个额度单位，由于作者没有测试每天多次发布视频，因此不知道是否会有触发额度上限导致发布失败的情绪，请各位使用者注意这点。
+
+## donate
+
+如果该项目对您有帮助，欢迎微信打赏
+
+<img src="./img/donate.jpg" width="33.3%" />
+
+如果对上述技术感兴趣，可以加WX `sh-moranliunian` 进行技术交流～
+
